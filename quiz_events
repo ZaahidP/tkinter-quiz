@@ -1,4 +1,6 @@
- def question_1(self):
+ from tkinter import as tk
+
+def question_1(self):
         self.question.configure(text="Question 1")
         self.btn1.configure(text="q1")
         self.btn2.configure(text="q1")
