@@ -115,8 +115,8 @@ class quiz_grid(tk.Tk):
         self.answer = tk.Button(self.bottom_frame, text="Submit")
         self.answer.grid(column=1, row=1, sticky="nsew")
 
-        self.ques_1 = QuestionButtons(self.top_frame, "Question 1",
-                                self.question_1)
+        self.ques_1 = QuestionButtons(self.top_frame, "Question 1")
+        self.ques_1.configure(command=lambda: question_1(self.question, self.btn1, self.btn2, self.btn3, self.btn4)
         self.ques_1.grid(column=1, row=1, sticky="nsew")
 
         self.ques_2 = QuestionButtons(self.top_frame, "Question 2",
