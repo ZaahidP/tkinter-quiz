@@ -1,5 +1,7 @@
 import tkinter as tk
 from quiz_widgets import QuizLabels, Option_Button, QuestionButtons
+from quiz_events
+
 
 class quiz_grid(tk.Tk):
     def __init__(self):
