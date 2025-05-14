@@ -1,0 +1,198 @@
+import tkinter as tk
+from quiz_widgets import QuizLabels, Option_Button
+
+class quiz_grid(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("Quiz")
+        self.geometry("900x700")
+
+
+        # Root intialisation
+        for i in range(3):
+            self.columnconfigure(i, weight = 1)                 
+            self.rowconfigure(i, weight = 1)
+
+        self.create_frames()            
+#Frame for top
+
+        self.create_widgets()
+
+        # Frames
+    def create_frames(self):
+        self.frame1 = tk.Frame(self, bg="red")
+        self.frame1.grid(row=0, column=0, sticky="nsew",
+                         padx=5, pady=5)
+        for i in range(3):
+            self.frame1.columnconfigure(i, weight = 1)
+            self.frame1.rowconfigure(i, weight = 1)
+
+        self.frame2 = tk.Frame(self, bg="blue")
+        self.frame2.grid(row=2, column=0, sticky="nsew",
+                         padx=5, pady=5)
+        for i in range(3):
+            self.frame2.columnconfigure(i, weight = 1)
+            self.frame2.rowconfigure(i, weight = 1)
+
+        self.frame3 = tk.Frame(self, bg="yellow")
+        self.frame3.grid(row=0, column=2, sticky="nsew",
+                         padx=5, pady=5)
+        for i in range(3):
+            self.frame3.columnconfigure(i, weight = 1)
+            self.frame3.rowconfigure(i, weight = 1)
+
+        self.frame4 = tk.Frame(self, bg="green")
+        self.frame4.grid(row=2, column=2, sticky="nsew",
+                         padx=5, pady=5)
+        for i in range(3):
+            self.frame4.columnconfigure(i, weight = 1)
+            self.frame4.rowconfigure(i, weight = 1)
+
+        self.mid_frame = tk.Frame(self, bg="black")
+        self.mid_frame.grid(row=1, column=0, columnspan=3, sticky="nsew")
+        
+        self.mid_frame.columnconfigure(0, weight = 1)
+
+        self.mid_frame.rowconfigure(0, weight = 1)
+        self.mid_frame.rowconfigure(1, weight = 1)
+
+        self.border_mid = tk.Frame(self.mid_frame, bg="black")
+        self.border_mid.grid(column=0, row=0, columnspan=3, sticky="nsew")
+
+        self.bottom_frame = tk.Frame(self.mid_frame, bg="orange")
+        self.bottom_frame.grid(column=0, row=1, columnspan=3, sticky="nsew",
+                               padx=10, pady=10
+                                                    )
+        self.bottom_frame = tk.Frame(self, bg="grey")
+        self.bottom_frame.grid(row=2, column=1, sticky="nsew")
+
+        for i in range(3):
+            self.bottom_frame.columnconfigure(i, weight = 1)
+            self.bottom_frame.rowconfigure(i, weight = 1)
+
+        self.top_frame = tk.Frame(self, bg="grey")
+        self.top_frame.grid(row=0, column=1, sticky="nsew")
+
+        self.top_frame.columnconfigure(0, weight = 1)
+        self.top_frame.columnconfigure(1, weight = 2)
+        self.top_frame.columnconfigure(2, weight = 2)
+        self.top_frame.columnconfigure(3, weight = 1)
+
+        self.top_frame.rowconfigure(0, weight = 1)
+        self.top_frame.rowconfigure(1, weight = 2)
+        self.top_frame.rowconfigure(2, weight = 2)
+        self.top_frame.rowconfigure(3, weight = 1)
+
+        
+        # Widgets
+    def create_widgets(self):
+
+        self.btn1 = Option_Button(self.frame1, "Option 1",
+                              self.option_1)
+        self.btn1.grid(row=1, column=1)
+        
+        self.btn2 = tk.Button(self.frame2,
+                             text="Option 3")
+        self.btn2.grid(row=1, column=1, sticky="nsew")
+
+        self.btn3 = tk.Button(self.frame3,
+                              text="Option 2")
+        self.btn3.grid(row=1, column=1, sticky="nsew")
+        
+        self.btn4 = tk.Button(self.frame4,
+                              text="Option 4")
+        self.btn4.grid(row=1, column=1, sticky="nsew")
+
+        self.question = QuizLabels(self.mid_frame, "Select a question to begin!")
+        self.question.grid(column=0, row=0)
+
+        self.feedback = QuizLabels(self.mid_frame, "Feedback")
+        self.feedback.configure(bg="orange")
+        self.feedback.grid(column=0, row=1)
+        
+        self.answer = tk.Button(self.bottom_frame, text="Submit")
+        self.answer.grid(column=1, row=1, sticky="nsew")
+
+        self.ques_1 = tk.Button(self.top_frame, text="Question 1",
+                                command=self.question_1)
+        self.ques_1.grid(column=1, row=1, sticky="nsew")
+
+        self.ques_2 = tk.Button(self.top_frame, text="Question 2",
+                                command=self.question_2)
+        self.ques_2.grid(column=2, row=1, sticky="nsew")
+
+        self.ques_3 = tk.Button(self.top_frame, text="Question 3",
+                                command=self.question_3)
+        self.ques_3.grid(column=1, row=2, sticky="nsew")
+
+        self.ques_4 = tk.Button(self.top_frame, text="Question 4",
+                                command=self.question_4)
+        self.ques_4.grid(column=2, row=2, sticky="nsew")
+
+    # Question buttons functionalities
+    
+    def question_1(self):
+        self.question.configure(text="Question 1")
+        self.btn1.configure(text="q1")
+        self.btn2.configure(text="q1")
+        self.btn3.configure(text="q1")
+        self.btn4.configure(text="q1")
+
+        self.question_selected = "one"
+
+    def question_2(self):
+        self.question.configure(text="Question 2")
+        self.btn1.configure(text="q2")
+        self.btn2.configure(text="q2")
+        self.btn3.configure(text="q2")
+        self.btn4.configure(text="q2")
+
+        self.question_selected = "two"
+
+    def question_3(self):
+        self.question.configure(text="Question 3")
+        self.btn1.configure(text="q3")
+        self.btn2.configure(text="q3")
+        self.btn3.configure(text="q3")
+        self.btn4.configure(text="q3")
+
+        self.question_selected = "three"
+
+    def question_4(self):
+        self.question.configure(text="Question 4")
+        self.btn1.configure(text="q4")
+        self.btn2.configure(text="q4")
+        self.btn3.configure(text="q4")
+        self.btn4.configure(text="q4")
+
+        self.question_selected = "four"
+
+
+    # Option button functionalities
+
+    def option_1(self):
+        options = ["one", "two", "three", "four"]
+        i = 0
+        for i in options:
+            if i == self.question_selected:
+               # self.btn1.configure(text="wrong")
+                self.feedback.configure(text="Well done mate")
+                
+        
+       
+    
+
+ 
+
+
+
+
+
+
+
+
+
+
+root = quiz_grid()
+root.mainloop()
+
