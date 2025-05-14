@@ -172,10 +172,8 @@ class quiz_grid(tk.Tk):
 
     def option_1(self):
         options = ["one", "two", "three", "four"]
-        i = 0
         for i in options:
             if i == self.question_selected:
-               # self.btn1.configure(text="wrong")
                 self.feedback.configure(text="Well done mate")
                 
         
