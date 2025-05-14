@@ -174,7 +174,7 @@ class quiz_grid(tk.Tk):
         options = ["one", "two", "three", "four"]
         for i in options:
             if i == self.question_selected:
-                self.feedback.configure(text="Well done mate")
+                self.feedback.configure(text="Your on question", i)
                 
         
        
