@@ -119,16 +119,13 @@ class quiz_grid(tk.Tk):
         self.ques_1.configure(command=lambda: question_1(self.question, self.btn1, self.btn2, self.btn3, self.btn4)
         self.ques_1.grid(column=1, row=1, sticky="nsew")
 
-        self.ques_2 = QuestionButtons(self.top_frame, "Question 2",
-                                self.question_2)
+        self.ques_2 = QuestionButtons(self.top_frame, "Question 2")
         self.ques_2.grid(column=2, row=1, sticky="nsew")
 
-        self.ques_3 = QuestionButtons(self.top_frame, "Question 3",
-                                self.question_3)
+        self.ques_3 = QuestionButtons(self.top_frame, "Question 3")
         self.ques_3.grid(column=1, row=2, sticky="nsew")
 
-        self.ques_4 = QuestionButtons(self.top_frame, "Question 4",
-                                self.question_4)
+        self.ques_4 = QuestionButtons(self.top_frame, "Question 4")
         self.ques_4.grid(column=2, row=2, sticky="nsew")
 
     # Question buttons functionalities
