@@ -91,16 +91,16 @@ class quiz_grid(tk.Tk):
                               self.option_1)
         self.btn1.grid(row=1, column=1)
         
-        self.btn2 = Option_Button(self.frame2,
-                             "Option 3")
+        self.btn2 = Option_Button(self.frame2, "Option 3",
+                                 self.option_1)
         self.btn2.grid(row=1, column=1)
 
-        self.btn3 = Option_Button(self.frame3,
-                              "Option 2")
+        self.btn3 = Option_Button(self.frame3, "Option 2",
+                                 self.option_1)
         self.btn3.grid(row=1, column=1)
         
-        self.btn4 = Option_Button(self.frame4,
-                              "Option 4")
+        self.btn4 = Option_Button(self.frame4,"Option 4",
+                                 self.option_1)
         self.btn4.grid(row=1, column=1)
 
         self.question = QuizLabels(self.mid_frame, "Select a question to begin!")
