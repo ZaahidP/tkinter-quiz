@@ -136,7 +136,7 @@ class quiz_grid(tk.Tk):
     def option_func(self):
         options = ["one", "two", "three", "four"]
         for i in options:
-            if i == self.question_selected:
+            if i == question_selected:
                 self.feedback.configure(text="Your on question", i)
                 
         
