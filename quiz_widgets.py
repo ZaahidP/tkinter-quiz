@@ -19,6 +19,16 @@ class Option_Button(tk.Button):
                      command=action)
 
       self.grid(sticky="nsew")
+
+
+class QuestionButtons(tk.Button):
+    def __init__(self, parent, butn_text):
+        super().__init__(parent)
+
+        self.configure(text=butn_text)
+
+        self.grid(sticky="nsew")
+                       
         
 
 

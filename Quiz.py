@@ -1,5 +1,8 @@
 import tkinter as tk
-from quiz_widgets import QuizLabels, Option_Button
+from quiz1_widgets import QuizLabels, Option_Button, QuestionButtons
+from quiz_events import *
+
+question_selected = 0
 
 class quiz_grid(tk.Tk):
     def __init__(self):
@@ -88,20 +91,20 @@ class quiz_grid(tk.Tk):
     def create_widgets(self):
 
         self.btn1 = Option_Button(self.frame1, "Option 1",
-                              self.option_1)
+                              self.option_func)
         self.btn1.grid(row=1, column=1)
         
-        self.btn2 = tk.Button(self.frame2,
-                             text="Option 3")
-        self.btn2.grid(row=1, column=1, sticky="nsew")
+        self.btn2 = Option_Button(self.frame2, "Option 3",
+                                 self.option_func)
+        self.btn2.grid(row=1, column=1)
 
-        self.btn3 = tk.Button(self.frame3,
-                              text="Option 2")
-        self.btn3.grid(row=1, column=1, sticky="nsew")
+        self.btn3 = Option_Button(self.frame3, "Option 2",
+                                 self.option_func)
+        self.btn3.grid(row=1, column=1)
         
-        self.btn4 = tk.Button(self.frame4,
-                              text="Option 4")
-        self.btn4.grid(row=1, column=1, sticky="nsew")
+        self.btn4 = Option_Button(self.frame4,"Option 4",
+                                 self.option_func)
+        self.btn4.grid(row=1, column=1)
 
         self.question = QuizLabels(self.mid_frame, "Select a question to begin!")
         self.question.grid(column=0, row=0)
@@ -113,71 +116,34 @@ class quiz_grid(tk.Tk):
         self.answer = tk.Button(self.bottom_frame, text="Submit")
         self.answer.grid(column=1, row=1, sticky="nsew")
 
-        self.ques_1 = tk.Button(self.top_frame, text="Question 1",
-                                command=self.question_1)
+        self.ques_1 = QuestionButtons(self.top_frame, "Question 1")
+        self.ques_1.configure(command=lambda: question_1(self.question, self.btn1, self.btn2, self.btn3, self.btn4))
         self.ques_1.grid(column=1, row=1, sticky="nsew")
 
-        self.ques_2 = tk.Button(self.top_frame, text="Question 2",
-                                command=self.question_2)
+        self.ques_2 = QuestionButtons(self.top_frame, "Question 2")
+        self.ques_2.configure(command=lambda: question_2(self.question, self.btn1, self.btn2, self.btn3, self.btn4))
         self.ques_2.grid(column=2, row=1, sticky="nsew")
 
-        self.ques_3 = tk.Button(self.top_frame, text="Question 3",
-                                command=self.question_3)
+        self.ques_3 = QuestionButtons(self.top_frame, "Question 3")
+        self.ques_3.configure(command=lambda: question_3(self.question, self.btn1, self.btn2, self.btn3, self.btn4))
         self.ques_3.grid(column=1, row=2, sticky="nsew")
 
-        self.ques_4 = tk.Button(self.top_frame, text="Question 4",
-                                command=self.question_4)
+        self.ques_4 = QuestionButtons(self.top_frame, "Question 4")
+        self.ques_4.configure(command=lambda: question_4(self.question, self.btn1, self.btn2, self.btn3, self.btn4))
         self.ques_4.grid(column=2, row=2, sticky="nsew")
-
-    # Question buttons functionalities
-    
-    def question_1(self):
-        self.question.configure(text="Question 1")
-        self.btn1.configure(text="q1")
-        self.btn2.configure(text="q1")
-        self.btn3.configure(text="q1")
-        self.btn4.configure(text="q1")
-
-        self.question_selected = "one"
-
-    def question_2(self):
-        self.question.configure(text="Question 2")
-        self.btn1.configure(text="q2")
-        self.btn2.configure(text="q2")
-        self.btn3.configure(text="q2")
-        self.btn4.configure(text="q2")
-
-        self.question_selected = "two"
-
-    def question_3(self):
-        self.question.configure(text="Question 3")
-        self.btn1.configure(text="q3")
-        self.btn2.configure(text="q3")
-        self.btn3.configure(text="q3")
-        self.btn4.configure(text="q3")
-
-        self.question_selected = "three"
-
-    def question_4(self):
-        self.question.configure(text="Question 4")
-        self.btn1.configure(text="q4")
-        self.btn2.configure(text="q4")
-        self.btn3.configure(text="q4")
-        self.btn4.configure(text="q4")
-
-        self.question_selected = "four"
-
 
     # Option button functionalities
 
-    def option_1(self):
+    def option_func(self):
         options = ["one", "two", "three", "four"]
-        i = 0
         for i in options:
-            if i == self.question_selected:
-               # self.btn1.configure(text="wrong")
-                self.feedback.configure(text="Well done mate")
-                
+            if i == question_selected:
+                self.feedback.configure(text="bruh")
+                print(i)
+            else:
+                print("didnt work")
+
+     
         
        
     
