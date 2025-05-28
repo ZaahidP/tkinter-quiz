@@ -3,10 +3,10 @@ import tkinter as tk
 
 
 class QuizLabels(tk.Label):
-    def __init__(self, parent, label_text):
+    def __init__(self, parent, label_text, font_name):
         super().__init__(parent)
 
-        self.configure(text=label_text)
+        self.configure(text=label_text, font=font_name)
         
         self.grid(sticky="nsew", padx=10, pady=10)
 
@@ -45,9 +45,21 @@ class VerticalFrame(tk.Frame):
         self.rowconfigure(1, weight = 2)
         self.rowconfigure(2, weight = 2)
         self.rowconfigure(3, weight = 1)
-                       
+
+class OptionFrames(tk.Frame):
+    def __init__(self, parent, bag):
+        super().__init__(parent)
+
+        self.configure(bg=bag)
+        self.grid(sticky="nsew", padx=5, pady=5)
+
+        for i in range(3):
+            self.columnconfigure(i, weight = 1)
+            self.rowconfigure(i, weight = 1)
+
+class EntryBox(tk.Entry):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+
         
-
-
-
-print("tester")
